@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "proto";
+
+service Starfriends {
+  rpc GetFilm(GetFilmRequest) returns (GetFilmResponse);
+  rpc ListFilms(ListFilmsRequest) returns (ListFilmsResponse);
+}
+
+message GetFilmRequest {
+  string id = 1;
+}
+
+message GetFilmResponse {
+  Film film = 1;
+}
+
+message ListFilmsRequest {
+
+}
+
+message ListFilmsResponse {
+  repeated Film films = 1;
+}
+
+message Film {
+  string id = 1;
+  string title = 2;
+  string director = 3;
+  string producer = 4;
+  google.protobuf.Timestamp release_date = 5;
+}
