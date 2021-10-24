@@ -24,5 +24,19 @@ func main() {
 		panic(err)
 	}
 
+	fmt.Println("/*############ VALID SAMPLE ############*/\n")
 	fmt.Println(req.GetFilms())
+	fmt.Println()
+
+	//############## This case will return error, since we dont have Film ID=7
+
+	fmt.Println("/*############ INVALID SAMPLE ############*/\n")
+
+	reqErr, err := stub.GetFilm(ctx, &proto.GetFilmRequest{Id: "7"})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(reqErr.GetFilm())
+
 }
